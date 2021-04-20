@@ -7,6 +7,7 @@
   - ``Lista Dinamica``
   - ``Fila Dinamica``
   - ``Pilha Dinamica``
+    
   - ###Estruturas ___Circulares___:
     - Lista Circular
   
