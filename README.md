@@ -8,6 +8,6 @@
   - ``Fila Dinamica``
   - ``Pilha Dinamica``
     
-  - ###Estruturas ___Circulares___:
+  - <strong>Estruturas ___Circulares___:<strong/>
     - Lista Circular
   
