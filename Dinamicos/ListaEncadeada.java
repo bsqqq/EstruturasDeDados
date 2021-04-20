@@ -12,13 +12,9 @@ public class ListaEncadeada {
     public void ultimoElemento() {
         if(estaVazio()) {
             System.out.println("Lista está vazia");
-        }
-        else if (ultimo == null && primeiro != null) {
-            System.out.println("O ultimo elemento é nulo");
         } else {
             System.out.println(ultimo.valor);
         }
-
     }
 
     public void penultimoElemento() {
@@ -46,7 +42,6 @@ public class ListaEncadeada {
     }
 
     public int tamanho() {
-        // metodo deve ser usado dentro de um system.out.print
         int i = 0;
         if (estaVazio()) {
             return i;
@@ -151,7 +146,7 @@ public class ListaEncadeada {
                 aux = aux.proximo;
                 i++;
             }
-            for (int k = 0; k <= tamanho() - 1; k++) {
+            for(int k = 0; k <= tamanho() - 1; k++) {
                 for (int j = 0; j <= tamanho() - 1; j++) {
 //                    System.out.printf("numeros[%d] = %d, numeros[%d] = %d \n", k, numeros[k], j, numeros[j]);
                     if (numeros[k] == numeros[j] && k != j) {
@@ -163,5 +158,4 @@ public class ListaEncadeada {
         System.out.println(flag);
         return flag;
     }
-
 }
