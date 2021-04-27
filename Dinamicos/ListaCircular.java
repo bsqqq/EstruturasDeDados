@@ -21,7 +21,7 @@ public class ListaCircular {
             System.out.println("Nada a mostrar...");
         } else {
             No aux = primeiro;
-            while(aux != null) {
+            while(aux.proximo != primeiro) {
                 System.out.print(aux.valor + " ");
                 aux = aux.proximo;
             }
@@ -36,7 +36,7 @@ public class ListaCircular {
             System.out.println("Está vazia");
             return i;
         } else {
-            while(aux != null) {
+            while(aux.proximo != primeiro) {
                 i++;
                 aux = aux.proximo;
             }
@@ -61,6 +61,7 @@ public class ListaCircular {
         if (estaVazio()) {
             primeiro = novo;
             ultimo = novo;
+            ultimo.proximo = primeiro;
         } else {
             ultimo.proximo = novo;
             ultimo = novo;
