@@ -10,4 +10,4 @@
     
   - <strong>Estruturas ___Circulares___:<strong/>
     - Lista Circular
-  
+    - <strong>Lista Duplamente Encadeada<strong/>
