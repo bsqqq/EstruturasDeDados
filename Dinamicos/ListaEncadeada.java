@@ -30,7 +30,7 @@ public class ListaEncadeada {
         for (int i = 0; i < pos; i++) {
             aux = aux.proximo;
         }
-        System.out.println(aux.valor);
+//        System.out.println(aux.valor);
         return aux.valor;
     }
 

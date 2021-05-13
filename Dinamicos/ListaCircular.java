@@ -2,21 +2,22 @@ package Dinamicos;
 
 public class ListaCircular {
     private No primeiro;
-    int tamanho;
-    
+    private No ultimo;
+
     public ListaCircular() {
         this.primeiro = null;
+        this.ultimo = null;
     }
 
     public boolean estaVazio() {
-        if(primeiro == null) {
+        if(primeiro == null)
             return true;
-        }
         return false;
     }
+
     public void exibir() {
         No aux = primeiro;
-        while(aux != null) {
+        while(aux != ultimo) {
             System.out.print(aux.valor + " ");
             aux = aux.proximo;
         }
@@ -25,12 +26,12 @@ public class ListaCircular {
 
     public int tamanho() {
         int i = 0;
-        No aux = primeiro;
         if (estaVazio()) {
             System.out.println("Está vazia");
             return i;
         } else {
-            while(aux.proximo != primeiro) {
+            No aux = primeiro;
+            while(aux != null) {
                 i++;
                 aux = aux.proximo;
             }
@@ -40,8 +41,9 @@ public class ListaCircular {
 
     public void adicionarInicio(int valor) {
         No novo = new No(valor);
-        if (estaVazio()) {
+        if(estaVazio()) {
             primeiro = novo;
+            ultimo = novo;
             return;
         }
         novo.proximo = primeiro;
@@ -53,7 +55,7 @@ public class ListaCircular {
         No novo = new No(valor);
         if (pos > tamanho()) {
             System.out.println("Posição informada é maior que o tamanho da lista!");
-            System.out.println("Selecione outra posição menor");
+            System.out.println("Selecione outra posição menor que " + tamanho());
         } else if (pos > 0 && pos < tamanho()) {
             No aux = primeiro;
             int count = 1;
@@ -69,20 +71,22 @@ public class ListaCircular {
 
     public void adicionarFinal(int valor) {
         No novo = new No(valor);
-        if (estaVazio()) {
+        if(estaVazio()) {
             primeiro = novo;
+            ultimo = novo;
             return;
         }
         No aux = primeiro;
-        while(aux.proximo != null) {
+        while(aux != ultimo) {
             aux = aux.proximo;
         }
         aux.proximo = novo;
+        novo.proximo = primeiro;
         return;
     }
 
     public No removerInicio() {
-        if (estaVazio()) {
+        if(estaVazio()) {
             System.out.println("Está vazia!");
             return null;
         }
@@ -99,6 +103,7 @@ public class ListaCircular {
         if(primeiro.proximo == null) {
             No aux = primeiro;
             primeiro = primeiro.proximo;
+            aux.proximo = null;
             return aux;
         }
         No aux = primeiro;
@@ -107,7 +112,7 @@ public class ListaCircular {
             temp = aux;
             aux = aux.proximo;
         }
-        temp.proximo = null;
+        temp.proximo = primeiro;
         return temp;
     }
 }
