@@ -42,6 +42,9 @@ public class ListaDuplamenteEncadeada {
                 System.out.print(aux.getValor() + " ");
                 aux = aux.getProximo();
                 i++;
+                if (i % 4 == 0) {
+                    System.out.println();
+                }
             }
         }
         catch (NullPointerException e) {
@@ -113,13 +116,9 @@ public class ListaDuplamenteEncadeada {
 
     public Object removerInicio() {
         if (!estaVazio()) {
-            Object retorno = inicio.getValor();
+            Object retorno = inicio;
             inicio = inicio.getProximo();
-            if (estaVazio())
-                fim = null;
-            else
-                inicio.setAnterior(null);
-            tamanho++;
+            tamanho--;
             return retorno;
         } else
             return null;
@@ -127,12 +126,9 @@ public class ListaDuplamenteEncadeada {
 
     public Object removerFim() {
         if (!estaVazio()) {
-            Object retorno = fim.getValor();
+            Object retorno = fim;
             fim = fim.getAnterior();
-            if (estaVazio())
-                inicio = null;
-            else
-                fim.setProximo(null);
+            fim.setProximo(inicio);
             tamanho--;
             return retorno;
         } else
