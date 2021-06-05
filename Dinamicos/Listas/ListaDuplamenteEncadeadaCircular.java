@@ -1,11 +1,11 @@
-package Dinamicos;
+package EstruturasDeDados.Dinamicos.Listas;
 
-public class ListaDuplamenteEncadeada {
+public class ListaDuplamenteEncadeadaCircular {
     private NoDuplo inicio;
     private NoDuplo fim;
     private int tamanho;
 
-    public ListaDuplamenteEncadeada() {
+    public ListaDuplamenteEncadeadaCircular() {
         this.inicio = null;
         this.fim = null;
         this.tamanho = 0;
@@ -42,20 +42,15 @@ public class ListaDuplamenteEncadeada {
                 System.out.print(aux.getValor() + " ");
                 aux = aux.getProximo();
                 i++;
-                if (i % 4 == 0) {
-                    System.out.println();
-                }
             }
-        }
-        catch (NullPointerException e) {
-            System.out.println("aqui tem um nulo");
-        }
-        finally {
             System.out.println();
         }
+            catch (NullPointerException e) {
+                System.out.println("aqui tem um nulo");
+            }
     }
 
-    public void exibirAoContrario() {
+    public void exibirReverse() {
         if (estaVazio()) {
             System.out.println("Está vazio");
             return;
@@ -68,50 +63,35 @@ public class ListaDuplamenteEncadeada {
                 aux = aux.getAnterior();
                 i++;
             }
+            System.out.println();
         }
         catch (NullPointerException e) {
             System.out.println("aqui tem um nulo");
         }
-        finally {
-            System.out.println();
-        }
     }
 
     public void adicionarInicio(Object valor) {
-        NoDuplo novo = new NoDuplo(null, valor, inicio);
+        NoDuplo novo = new NoDuplo(fim, valor, inicio);
         if (!estaVazio())
-            inicio.setAnterior(novo);
-        else
+            inicio = novo;
+        else {
             fim = novo;
-        inicio = novo;
+            inicio = novo;
+        }
         tamanho++;
+        return;
     }
 
     public void adicionarFim(Object valor) {
-        NoDuplo novo = new NoDuplo(fim, valor, null);
-        if (estaVazio())
+        NoDuplo novo = new NoDuplo(fim, valor, inicio);
+        if (estaVazio()){
+            fim = novo;
             inicio = novo;
-        else
-            fim.setProximo(novo);
-        fim = novo;
-        tamanho++;
-    }
-
-    public void adicionarPosicaoN(int pos, int valor) {
-        if(pos < 0 || pos > tamanho) {
-            System.out.println("Posição Invalida");
-        } else if (pos == 0) {
-            adicionarInicio(valor);
         } else {
-            NoDuplo aux = inicio;
-            for(int i = 0; i < pos - 1; i++) {
-                aux = aux.getProximo();
-            }
-            NoDuplo novo = new NoDuplo(aux, valor, aux.getProximo());
-            aux.getProximo().setAnterior(novo);
-            aux.setProximo(novo);
-            tamanho++;
+            fim = novo;
         }
+        tamanho++;
+        return;
     }
 
     public Object removerInicio() {
@@ -135,8 +115,8 @@ public class ListaDuplamenteEncadeada {
             return null;
     }
 
-    public Object buscarPeloItem(Object item) {
-        Object itembuscado;
+    public Object buscar(Object item) {
+        Object itembuscado = null;
         int i = 0;
             NoDuplo aux = inicio;
             try {
@@ -155,24 +135,6 @@ public class ListaDuplamenteEncadeada {
                     System.out.println(-1);
                 return itembuscado;
             }
-    }
-
-    public Object buscarPeloIndice(int indice) {
-        Object itembuscado;
-        int i = 0;
-        NoDuplo aux = inicio;
-        try {
-            while(i != indice) {
-                aux = aux.getProximo();
-                i++;
-            }
-        } catch (NullPointerException e) {
-            System.out.println("Não foi possivel localizar o pedido, talvez seu pedido não exista na lista");
-        }
-        finally {
-            itembuscado = aux.getValor();
-            return itembuscado;
-        }
     }
 
     public Object[] qualSeRepeteMais() {
@@ -194,7 +156,7 @@ public class ListaDuplamenteEncadeada {
                 }
             }
         }
-        System.out.println("O elemento que mais se repete é " + resultado[0] + "'");
+        System.out.println("O elemento que mais se repete é " + resultado[0] +"'");
         return resultado;
     }
 }

@@ -1,4 +1,4 @@
-package Dinamicos;
+package EstruturasDeDados.Dinamicos.Listas;
 
 public class No {
     int valor;

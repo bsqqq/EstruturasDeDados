@@ -1,4 +1,4 @@
-package Dinamicos;
+package EstruturasDeDados.Dinamicos.FilaPilha;
 
 public class FilaEncadeada {
     private No primeiro;

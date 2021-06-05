@@ -1,4 +1,4 @@
-package Dinamicos;
+package EstruturasDeDados.Dinamicos.FilaPilha;
 
 public class NoDuplo {
     private Object valor;

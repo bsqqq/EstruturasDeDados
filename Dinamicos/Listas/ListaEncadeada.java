@@ -1,4 +1,4 @@
-package Dinamicos;
+package EstruturasDeDados.Dinamicos.Listas;
 
 public class ListaEncadeada {
     private No primeiro;
